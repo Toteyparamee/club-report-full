@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model TeacherClub {
+  id             Int      @id @default(autoincrement())
+  prefix         String
+  firstName      String
+  lastName       String
+  subjectGroup   String
+  clubName       String
+  gradeLevel     String   @default("")
+  totalStudents  Int      @default(0)
+  fcmToken       String?
+  reports        Report[]
+  createdAt      DateTime @default(now())
+
+  @@map("Teacher-club")
+}
+
+model Report {
+  id               Int        @id @default(autoincrement())
+  teacherId        Int
+  teacher          TeacherClub @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  gradeLevel       String
+  activityDate     DateTime
+  totalStudents    Int
+  absentStudents   Int
+  evidenceFiles    Evidence[]
+  createdAt        DateTime   @default(now())
+}
+
+model Evidence {
+  id        Int    @id @default(autoincrement())
+  reportId  Int
+  report    Report @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  fileName  String
+  filePath  String
+  fileUrl   String @default("")
+}
+
+model Setting {
+  key   String @id
+  value String
+}

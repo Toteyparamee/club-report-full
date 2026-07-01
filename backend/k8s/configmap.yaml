@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: clubreport-config
+  namespace: cnpapp
+data:
+  PORT: "4000"
+  MINIO_ENDPOINT: "10.194.1.44:9000"
+  MINIO_BUCKET: "cnpapp"
+  MINIO_REGION: "us-east-1"
+  MINIO_USE_SSL: "false"
+  MINIO_PUBLIC_URL: "http://10.194.1.44:9000"

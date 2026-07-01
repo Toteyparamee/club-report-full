@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudflared-config
+  namespace: dev-paramee
+data:
+  config.yaml: |
+    tunnel: 17b067d7-3423-4308-be1f-b1c21fb4bb79
+    credentials-file: /etc/cloudflared/credentials/credentials.json
+    no-autoupdate: true
+    ingress:
+      - hostname: socialdev.parameedev.online
+        service: http://kong-proxy.kong.svc.cluster.local:80
+      - hostname: clubreport.parameedev.online
+        service: http://clubreport-backend-svc.cnpapp.svc.cluster.local:4000
+      - service: http_status:404

@@ -1,0 +1,9 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/Toteyparamee/club-report.git
+[submodule "admin-frontend"]
+	path = admin-frontend
+	url = https://github.com/Toteyparamee/admin-clubreport.git
+[submodule "backend"]
+	path = backend
+	url = https://gitlab.kpinnovative.co.th/paramee/club-report.git
